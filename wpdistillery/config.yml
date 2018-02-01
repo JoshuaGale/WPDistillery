@@ -19,8 +19,8 @@ wpfolder: public
 wpversion: latest
 
 # language/timezone
-wplocale: en_US
-timezone: "America/New_York"
+wplocale: en_AU
+timezone: "Brisbane/Australia"
 
 # admin user settings
 admin:
@@ -41,9 +41,9 @@ db:
 #################################################################
 
 wpsettings:
-  url: wpdistillery.vm
-  title: Example Title
-  description: Example Description
+  url: localhost:8080
+  title: New Site
+  description: Description
   permalink_structure: "/%postname%/"
   thumbnail_width: 150
   thumbnail_height: 150
@@ -54,7 +54,7 @@ wpsettings:
   # use page as frontpage
   page_on_front: true
   # define frontpage name (requires `page_on_front: true`)
-  frontpage_name: Example Front Page
+  frontpage_name: Home
   # automatic conversion of smilies
   convert_smilies: false
 
@@ -63,12 +63,12 @@ wpsettings:
 
 # install a custom theme via url, rename it and remove default themes
 themes:
-  name: WPSeed
-  url: "https://github.com/flurinduerst/WPSeed/archive/master.zip"
+  name: Underscores
+  url: "https://github.com/automattic/_s/archive/master.zip"
   rename: ""
   remove:
     - twentyfifteen
-    - twentysixteen
+    #- twentysixteen
     - twentyseventeen
 
 
