@@ -35,12 +35,11 @@ For your next project, you can use your `config.yml` as a personal template.
 ## Setup
 To setup a new project running Scotch Box and WordPress, simply follow these steps:
 
-1. `git clone https://github.com/flurinduerst/WPDistillery.git my-project`
-2. customize `wpdistillery/config.yml` (see [configuration file documentation](README_CONFIG.md))
-3. in `Vagrantfile`, add your local URL at `config.vm.hostname` (This should be the same as `wpsettings:url:` in `config.yml`)
-4. Run `vagrant up` inside your project root
+1. `git clone https://github.com/lindsaymarkward/WPDistillery my-project`
+2. (if you want) customize `wpdistillery/config.yml` (see [configuration file documentation](README_CONFIG.md))
+3. Run `vagrant up` inside your project root
 
-Done! You can now access your project at the local URL (for example `yoursite.vm`) defined in step 3. (or at http://192.168.33.10/)
+Done! You can now access your project at the local URL http://localhost:8080 (or at http://192.168.33.10)
 
 ## Additional Information
 
