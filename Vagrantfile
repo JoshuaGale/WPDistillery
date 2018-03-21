@@ -26,6 +26,10 @@ Vagrant.configure("2") do |config|
     # Run Provisioning – executed within the first `vagrant up` and every `vagrant provision`
     config.vm.provision "shell", path: "wpdistillery/provision.sh"
 
+    # copy user preferences files to the system. add whatever other files you want here
+    config.vm.provision "file", source: "wpdistillery/.inputrc", destination: "/home/vagrant/.inputrc"
+    config.vm.provision "file", source: "wpdistillery/movefile.yml", destination: "/var/www/public/movefile.yml"
+
     # OPTIONAL - Update WordPress and all Plugins on vagrant up – executed within every `vagrant up`
     #config.vm.provision "shell", inline: "echo \"== Update WordPress & Plugins ==\" && cd /var/www/public && wp core update && wp plugin update --all", run: "always", privileged: false
 
