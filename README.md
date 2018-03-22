@@ -35,6 +35,7 @@ For your next project, you can use your `config.yml` as a personal template.
 ## Setup
 To setup a new project running Scotch Box and WordPress, simply follow these steps:
 
+0. If you're running this on JCU Mac lab computers (as this project is designed for), you may first need to change your *VirtualBox* preferences so the `Default Machine Folder` points to _your_ folder: *change "default" to "jc123456"* (your login)
 1. `git clone https://github.com/lindsaymarkward/WPDistillery my-project`
 2. (if you want) customize `wpdistillery/config.yml` (see [configuration file documentation](README_CONFIG.md))
 3. Run `vagrant up` inside your project root
