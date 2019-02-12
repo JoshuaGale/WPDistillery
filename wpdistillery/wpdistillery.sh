@@ -5,7 +5,7 @@
 # Author: Flurin Dürst
 # URL: https://wpdistillery.org
 #
-# File version 1.8.0
+# File version 1.8.3
 
 # ERROR Handler
 # ask user to continue on error
@@ -19,6 +19,9 @@ function continue_error {
   fi
 }
 trap 'continue_error' ERR
+
+# WP-CLI environment variable
+export WP_CLI_CACHE_DIR=/home/vagrant/.wp-cli/cache
 
 # REQUIREMENTS
 ####################################################################################################
@@ -63,13 +66,15 @@ cd ..
 # READ CONFIG
 eval $(parse_yaml wpdistillery/config.yml "CONF_")
 
-# CHECK WP FOLDER
-if [ ! -d "$CONF_wpfolder" ]; then
-  mkdir $CONF_wpfolder
-  printf "${BLU}»»» creating WP Folder $CONF_wpfolder...${NC}\n"
+
+# CHECK FOR ROOT-DIR
+if [ ! -d "public" ]; then
+  printf "${BLU}»»» creating root dir \"public\"...${NC}\n"
+  mkdir public
 fi
 
-cd $CONF_wpfolder
+# navigate to root dir
+cd public
 
 # INSTALL WORDPRESS
 if $CONF_setup_wp ; then
@@ -116,27 +121,27 @@ else
   printf "${BLU}>>> skipping settings...${NC}\n"
 fi
 
-# INSTALL/REMOVE THEMES
-if $CONF_setup_themes ; then
-  printf "${BRN}[=== CONFIGURE THEMES ===]${NC}\n"
-  printf "${BLU}»»» downloading $CONF_themes_name...${NC}\n"
-  wp theme install $CONF_themes_url --force
-  printf "${BLU}»»» installing/activating $CONF_themes_name...${NC}\n"
-  if [ ! -z "$CONF_themes_rename" ]; then
+# INSTALL/REMOVE THEME
+if $CONF_setup_theme ; then
+  printf "${BRN}[=== CONFIGURE THEME ===]${NC}\n"
+  printf "${BLU}»»» downloading $CONF_theme_name...${NC}\n"
+  wp theme install $CONF_theme_url --force
+  printf "${BLU}»»» installing/activating $CONF_theme_name...${NC}\n"
+  if [ ! -z "$CONF_theme_rename" ]; then
     # rename theme
-    printf "${BLU}»»» renaming $CONF_themes_name to $CONF_themes_rename...${NC}\n"
-    mv wp-content/themes/$CONF_themes_name wp-content/themes/$CONF_themes_rename
-    wp theme activate $CONF_themes_rename
+    printf "${BLU}»»» renaming $CONF_theme_name to $CONF_theme_rename...${NC}\n"
+    mv wp-content/themes/$CONF_theme_name wp-content/themes/$CONF_theme_rename
+    wp theme activate $CONF_theme_rename
   else
-    wp theme activate $CONF_themes_name
+    wp theme activate $CONF_theme_name
   fi
-  if [ ! -z "$CONF_themes_remove" ]; then
+  if [ ! -z "$CONF_theme_remove" ]; then
     printf "${BLU}»»» removing default themes...${NC}\n"
     # loop trough themes that shall be removed
-    for loopedtheme in "${CONF_themes_remove[@]}"
+    for loopedtheme in "${CONF_theme_remove[@]}"
     do :
       #make sure the theme to delete is not the chosen one
-      if [ $loopedtheme != $CONF_themes_name ]; then
+      if [ $loopedtheme != $CONF_theme_name ]; then
         printf "${BLU}» removing $loopedtheme...${NC}\n"
         wp theme delete $loopedtheme
 

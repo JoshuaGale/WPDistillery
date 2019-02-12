@@ -6,14 +6,11 @@
 # For detailed instructions on this file read the config.yml-documentation at
 # https://wpdistillery.org/documentation/config-yml-documentation/
 #
-# File Version: 1.8.0
+# File Version: 1.8.3
 
 
 # INSTALLATION
 #################################################################
-
-# WordPress folder
-wpfolder: public
 
 # WordPress version
 wpversion: latest
@@ -61,8 +58,8 @@ wpsettings:
 # THEMES
 #################################################################
 
-# install a custom theme via url, rename it and remove default themes
-themes:
+# install a custom theme via url, rename it and remove the default themes
+theme:
   name: WPSeed
   url: "https://github.com/flurinduerst/WPSeed/archive/master.zip"
   rename: ""
@@ -88,17 +85,10 @@ plugins_active:
 # plugins to install
 plugins_inactive:
   #development
-  - custom-post-type-ui
   - search-and-replace
-  - capability-manager-enhanced
-  #administration
-  - adminimize
-  - admin-menu-editor
-  - admin-menu-reorder
   # seo
   - autodescription
   #security/backup
-  - wp-security-audit-log
   - backwpup
 
 # WPDISTILLERY SETUP

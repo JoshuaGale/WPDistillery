@@ -2,19 +2,39 @@
 # vi: set ft=ruby :
 #
 # WPDistillery Vagrantfile using Scotch Box
+# Check out https://box.scotch.io to learn more about Scotch Box
 #
-# File Version: 1.2.0
+# File Version: 1.2.1
 
 Vagrant.configure("2") do |config|
 
     config.ssh.username = "vagrant"
     config.ssh.password = "vagrant"
     config.vm.box = "scotch/box"
+    # For Mac labs:
     config.vm.network "private_network", ip: "192.168.33.10"
+    # For Windows labs:
+    #config.vm.network "public_network"
+    
     # The following line allows you to visit http://localhost:8080 on your host and it will serve the site (port 80 on the guest)
     config.vm.network "forwarded_port", guest: 80, host: 8080
     #config.vm.hostname = "wpdistillery.vm"
-    config.vm.synced_folder ".", "/var/www", :mount_options => ["dmode=777", "fmode=666"]
+
+    # Use vagrant-winnfsd if available https://github.com/flurinduerst/WPDistillery/issues/78
+    if Vagrant.has_plugin? 'vagrant-winnfsd'
+      config.vm.synced_folder ".", "/var/www",
+        nfs: true,
+        mount_options: [
+        'nfsvers=3',
+        'vers=3',
+        'actimeo=1',
+        'rsize=8192',
+        'wsize=8192',
+        'timeo=14'
+        ]
+    else
+      config.vm.synced_folder ".", "/var/www", :mount_options => ["dmode=777", "fmode=666"]
+    end
 
     # WPDistillery Windows Support
     if Vagrant::Util::Platform.windows?
