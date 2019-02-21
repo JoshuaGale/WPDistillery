@@ -15,10 +15,10 @@ Vagrant.configure("2") do |config|
     config.vm.network "private_network", ip: "192.168.33.10"
     # For Windows labs:
     #config.vm.network "public_network"
-    
+
     # The following line allows you to visit http://localhost:8080 on your host and it will serve the site (port 80 on the guest)
-    config.vm.network "forwarded_port", guest: 80, host: 8080
-    #config.vm.hostname = "wpdistillery.vm"
+   config.vm.network "forwarded_port", guest: 80, host: 8080
+    # config.vm.hostname = "wpdistillery.vm"
 
     # Use vagrant-winnfsd if available https://github.com/flurinduerst/WPDistillery/issues/78
     if Vagrant.has_plugin? 'vagrant-winnfsd'

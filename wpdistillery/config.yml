@@ -39,6 +39,7 @@ db:
 
 wpsettings:
   url: localhost:8080
+  # url: wpdistillery.vm
   title: New Site
   description: Description
   permalink_structure: "/%postname%/"
@@ -60,12 +61,12 @@ wpsettings:
 
 # install a custom theme via url, rename it and remove the default themes
 theme:
-  name: WPSeed
+  name: wpseed
   url: "https://github.com/flurinduerst/WPSeed/archive/master.zip"
   rename: ""
   remove:
     - twentyfifteen
-    #- twentysixteen
+    - twentysixteen
     - twentyseventeen
 
 
@@ -84,11 +85,11 @@ plugins_active:
 
 # plugins to install
 plugins_inactive:
-  #development
+  - development
   - search-and-replace
-  # seo
+  - seo
   - autodescription
-  #security/backup
+  - security/backup
   - backwpup
 
 # WPDISTILLERY SETUP
@@ -98,8 +99,8 @@ plugins_inactive:
 setup:
   wp: true
   settings: true
-  themes: false
-  plugins: true
+  theme: false
+  plugins: false
   cleanup: true
   # adjust what data you want to be deleted within the cleanup (requires `cleanup: true`)
   comment: true

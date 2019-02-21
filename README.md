@@ -1,5 +1,12 @@
 # WPDistillery
 
+This repo is a custom fork of WPDistillery designed to run on JCU Mac and PC labs.  
+See the instructions below for settings to customise to work on your OS.
+For running on your own machine (admin privileges), you can just use the regular version.
+
+*Note:* After installing, go into the WordPress admin settings and re-save the permalink settings.
+This solves the problem where content can't be saved or links don't work.
+
 ![WPDistillery Logo](http://files.flurinduerst.ch/wpdistillery/wpdistillery_logo.png)
 
 Version 2.3.6 (05.11.2018)
