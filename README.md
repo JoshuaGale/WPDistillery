@@ -2,7 +2,7 @@
 
 This repo is a custom fork of WPDistillery designed to run on JCU Mac and PC labs.  
 See the instructions below for settings to customise to work on your OS.
-For running on your own machine (admin privileges), you can just use the regular version.
+For running on your own machine (admin privileges), you can just use the regular version of WPDistillery.
 
 *Note:* After installing, go into the WordPress admin settings and re-save the permalink settings.
 This solves the problem where content can't be saved or links don't work.
@@ -51,13 +51,13 @@ WPDistillery is fully compatible with [Scotchbox 3.0](https://box.scotch.io/)
 
 To setup a new project running Scotch Box and WordPress, simply follow these steps:
 
-0. If you're running this on JCU Mac lab computers (as this project is designed for), you may first need to change your *VirtualBox* preferences so the `Default Machine Folder` points to _your_ folder: *change "default" to "jc123456"* (your login)
+0. You may first need to change your *VirtualBox* preferences so the `Default Machine Folder` points to _your_ folder: *change "default" to "jc123456"* (your login)
 1. In a terminal, run: `git clone https://github.com/lindsaymarkward/WPDistillery project` (where `project` is whatever you want to call your new WordPress VM folder)
 2. (if you want) customise `wpdistillery/config.yml` (see [configuration file documentation](README_CONFIG.md))
 3. Run `cd project` (same name as above) to change to your project root (where your `Vagrantfile` is)
 4. Run `vagrant up` to load then boot your new VM.
-
-Done! You can now access your project at the local URL http://localhost:8080
+5. On JCU Mac/PC computers, you can access your WordPress site at the local URL http://192.168.33.10
+6. Login to WordPress then go to the admin settings and re-save the permalink settings (without editing, just save them).
 
 ## Additional Information
 

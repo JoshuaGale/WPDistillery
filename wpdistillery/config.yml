@@ -38,10 +38,9 @@ db:
 #################################################################
 
 wpsettings:
-  url: localhost:8080
-  # url: wpdistillery.vm
+  url: 192.168.33.10
   title: New Site
-  description: Description
+  description: Amazing Description
   permalink_structure: "/%postname%/"
   thumbnail_width: 150
   thumbnail_height: 150
